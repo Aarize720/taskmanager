@@ -63,6 +63,9 @@ export interface TaskFormData {
   status: TaskStatus;
 }
 
+export type CreateTaskDto = TaskFormData;
+export type UpdateTaskDto = Partial<TaskFormData>;
+
 export interface TaskStats {
   total: number;
   todo: number;
@@ -95,6 +98,9 @@ export interface EventFormData {
   color?: string;
 }
 
+export type CreateEventDto = EventFormData;
+export type UpdateEventDto = Partial<EventFormData>;
+
 // Note types
 export interface Note {
   id: number;
@@ -109,6 +115,9 @@ export interface NoteFormData {
   title: string;
   content: string;
 }
+
+export type CreateNoteDto = NoteFormData;
+export type UpdateNoteDto = Partial<NoteFormData>;
 
 // Notification types
 export enum NotificationType {

@@ -1,7 +1,7 @@
 import cron from 'node-cron';
 import pool from '../config/database';
 import transporter from '../config/email';
-import { Task, User, NotificationType } from '../types';
+import { Task, NotificationType } from '../types';
 
 // Check for tasks due soon (24 hours before)
 const checkTasksDueSoon = async () => {

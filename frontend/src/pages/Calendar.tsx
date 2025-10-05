@@ -2,13 +2,13 @@ import { useEffect, useState } from 'react';
 import { toast } from 'react-toastify';
 import { useAppDispatch } from '@/hooks/useAppDispatch';
 import { useAppSelector } from '@/hooks/useAppSelector';
-import { fetchEvents, createEvent, updateEvent, deleteEvent } from '@/store/slices/eventsSlice';
+import { fetchEvents, createEvent, updateEvent, deleteEvent } from '@/store/slices/eventSlice';
 import type { Event, CreateEventDto, UpdateEventDto } from '@/types';
 import './Calendar.css';
 
 const Calendar = () => {
   const dispatch = useAppDispatch();
-  const { events, loading } = useAppSelector((state) => state.events);
+  const { events, loading: _loading } = useAppSelector((state) => state.events);
 
   const [currentDate, setCurrentDate] = useState(new Date());
   const [selectedDate, setSelectedDate] = useState<Date | null>(null);

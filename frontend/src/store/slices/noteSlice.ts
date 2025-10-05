@@ -31,7 +31,7 @@ const initialState: NoteState = {
 // Async thunks
 export const fetchNotes = createAsyncThunk(
   'notes/fetchNotes',
-  async (params?: { search?: string; page?: number }, { rejectWithValue }) => {
+  async (params: { search?: string; page?: number; limit?: number } = {}, { rejectWithValue }) => {
     try {
       const response = await api.get<PaginatedResponse<Note>>('/notes', { params });
       return response.data;

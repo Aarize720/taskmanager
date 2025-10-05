@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { toast } from 'react-toastify';
 import { useAppDispatch } from '@/hooks/useAppDispatch';
 import { useAppSelector } from '@/hooks/useAppSelector';
-import { fetchNotes, createNote, updateNote, deleteNote } from '@/store/slices/notesSlice';
+import { fetchNotes, createNote, updateNote, deleteNote } from '@/store/slices/noteSlice';
 import type { Note, CreateNoteDto, UpdateNoteDto } from '@/types';
 import './Notes.css';
 

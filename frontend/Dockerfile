@@ -6,8 +6,8 @@ WORKDIR /app
 # Copy package files
 COPY package*.json ./
 
-# Install dependencies
-RUN npm install
+# Install dependencies with increased timeout and verbose logging
+RUN npm install --verbose --fetch-timeout=60000 --fetch-retries=5
 
 # Copy source code
 COPY . .

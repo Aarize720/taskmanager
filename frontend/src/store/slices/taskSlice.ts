@@ -33,7 +33,7 @@ const initialState: TaskState = {
 // Async thunks
 export const fetchTasks = createAsyncThunk(
   'tasks/fetchTasks',
-  async (params?: { status?: string; priority?: string; search?: string; page?: number }, { rejectWithValue }) => {
+  async (params: { status?: string; priority?: string; search?: string; page?: number; limit?: number } = {}, { rejectWithValue }) => {
     try {
       const response = await api.get<PaginatedResponse<Task>>('/tasks', { params });
       return response.data;

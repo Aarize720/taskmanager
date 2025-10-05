@@ -31,7 +31,7 @@ const initialState: NotificationState = {
 // Async thunks
 export const fetchNotifications = createAsyncThunk(
   'notifications/fetchNotifications',
-  async (params?: { is_read?: boolean; page?: number }, { rejectWithValue }) => {
+  async (params: { is_read?: boolean; page?: number; limit?: number } = {}, { rejectWithValue }) => {
     try {
       const response = await api.get<PaginatedResponse<Notification>>('/notifications', { params });
       return response.data;

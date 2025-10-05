@@ -60,7 +60,7 @@ if (process.env.NODE_ENV !== 'production') {
 }
 
 // Health check endpoint
-app.get('/health', (req, res) => {
+app.get('/health', (_req, res) => {
   res.json({
     success: true,
     message: 'Server is running',
@@ -76,7 +76,7 @@ app.use('/api/notes', noteRoutes);
 app.use('/api/notifications', notificationRoutes);
 
 // API documentation endpoint
-app.get('/api', (req, res) => {
+app.get('/api', (_req, res) => {
   res.json({
     success: true,
     message: 'Task Manager API',

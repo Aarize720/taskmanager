@@ -2,13 +2,14 @@ import { useEffect, useState } from 'react';
 import { toast } from 'react-toastify';
 import { useAppDispatch } from '@/hooks/useAppDispatch';
 import { useAppSelector } from '@/hooks/useAppSelector';
-import { fetchTasks, createTask, updateTask, deleteTask } from '@/store/slices/tasksSlice';
+import { fetchTasks, createTask, updateTask, deleteTask } from '@/store/slices/taskSlice';
 import type { Task, CreateTaskDto, UpdateTaskDto } from '@/types';
+import { TaskPriority, TaskStatus } from '@/types';
 import './Tasks.css';
 
 const Tasks = () => {
   const dispatch = useAppDispatch();
-  const { tasks, loading, total } = useAppSelector((state) => state.tasks);
+  const { tasks, loading, pagination } = useAppSelector((state) => state.tasks);
 
   const [showModal, setShowModal] = useState(false);
   const [editingTask, setEditingTask] = useState<Task | null>(null);
@@ -21,8 +22,8 @@ const Tasks = () => {
     title: '',
     description: '',
     due_date: '',
-    priority: 'medium',
-    status: 'todo',
+    priority: TaskPriority.MEDIUM,
+    status: TaskStatus.TODO,
   });
 
   useEffect(() => {
@@ -53,8 +54,8 @@ const Tasks = () => {
         title: '',
         description: '',
         due_date: '',
-        priority: 'medium',
-        status: 'todo',
+        priority: TaskPriority.MEDIUM,
+        status: TaskStatus.TODO,
       });
     }
     setShowModal(true);
@@ -67,8 +68,8 @@ const Tasks = () => {
       title: '',
       description: '',
       due_date: '',
-      priority: 'medium',
-      status: 'todo',
+      priority: TaskPriority.MEDIUM,
+      status: TaskStatus.TODO,
     });
   };
 
@@ -160,12 +161,12 @@ const Tasks = () => {
     return date.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
   };
 
-  const isOverdue = (dueDate: string | null, status: string) => {
+  const isOverdue = (dueDate: string | null | undefined, status: string) => {
     if (!dueDate || status === 'completed') return false;
     return new Date(dueDate) < new Date();
   };
 
-  const totalPages = Math.ceil(total / 10);
+  const totalPages = Math.ceil(pagination.total / 10);
 
   return (
     <div className="tasks-page">

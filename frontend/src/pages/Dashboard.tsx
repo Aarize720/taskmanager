@@ -2,9 +2,9 @@ import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useAppDispatch } from '@/hooks/useAppDispatch';
 import { useAppSelector } from '@/hooks/useAppSelector';
-import { fetchTasks } from '@/store/slices/tasksSlice';
-import { fetchEvents } from '@/store/slices/eventsSlice';
-import { fetchNotifications } from '@/store/slices/notificationsSlice';
+import { fetchTasks } from '@/store/slices/taskSlice';
+import { fetchEvents } from '@/store/slices/eventSlice';
+import { fetchNotifications } from '@/store/slices/notificationSlice';
 import './Dashboard.css';
 
 interface Stats {

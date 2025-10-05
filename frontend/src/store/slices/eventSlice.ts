@@ -19,7 +19,7 @@ const initialState: EventState = {
 // Async thunks
 export const fetchEvents = createAsyncThunk(
   'events/fetchEvents',
-  async (params?: { start_date?: string; end_date?: string }, { rejectWithValue }) => {
+  async (params: { start_date?: string; end_date?: string; page?: number; limit?: number } = {}, { rejectWithValue }) => {
     try {
       const response = await api.get<ApiResponse<Event[]>>('/events', { params });
       return response.data.data!;

@@ -15,7 +15,7 @@ const transporter = nodemailer.createTransport({
 
 // Verify connection configuration
 if (process.env.SMTP_USER && process.env.SMTP_PASSWORD) {
-  transporter.verify((error, success) => {
+  transporter.verify((error, _success) => {
     if (error) {
       console.log('❌ Email configuration error:', error);
     } else {
